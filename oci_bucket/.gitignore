@@ -1,0 +1,9 @@
+example/terraform
+example/terraform.lock
+example/tf.plan
+example/terraform.tfstate
+example/terraform.tfstate.backup
+example/.terraform/
+example/.terraform.lock.hcl
+example/provider_oci.tf
+example/variables.tfvars
