@@ -11,23 +11,26 @@ module "oci_bucket" {
     storage_tier = each.value.storage_tier
 }
 
-# output "bucket_properties" {
-#     description = "The properties of the created bucket"
+output "bucket_properties" {
+    description = "The properties of the created bucket"
+    value       = {
+        for k, v in module.oci_bucket :
+        k => {
+            id         = v.compartment_id
+            name       = v.name
+            namespace  = v.namespace
+            storage_tier = v.storage_tier
+        }
+    }
+}
+
+# output "namespace" {
+#     description = "The namespace of the created bucket"
 #     value       = {
-#         for k, v in oci_objectstorage_bucket.bucket :
-#         k => {
-#             id         = v.id
-#             name       = v.name
-#             namespace  = v.namespace
-#             storage_tier = v.storage_tier
-#         }
+#         for k, v in module.oci_bucket :
+#         k => v.namespace
 #     }
 # }
 
-output "namespace" {
-    description = "The namespace of the created bucket"
-    value       = {
-        for k, v in module.oci_bucket :
-        k => v.namespace
-    }
-}
+# access to specific values in the module:
+# module.oci_bucket["my-bucket-01"].namespace
