@@ -17,3 +17,9 @@ variable "storage_tier" {
     description = "The storage tier of the bucket"
     type        = string
 }
+
+variable "access_type" {
+    description = "The type of access to the bucket"
+    type        = string
+    default = "NoPublicAccess"
+}

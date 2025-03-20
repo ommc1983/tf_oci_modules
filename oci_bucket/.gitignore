@@ -7,3 +7,4 @@ example/.terraform/
 example/.terraform.lock.hcl
 example/provider_oci.tf
 example/variables.tfvars
+example/variables.auto.tfvars
